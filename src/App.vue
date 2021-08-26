@@ -15,12 +15,16 @@
     </p>
     <img class="image-poke" :src="showImage" alt="image-poke" />
     <h1 class="features">Habilidades</h1>
-    <p>
+    <p
+      v-for="(ability, index) in showAbility"
+      :key="index"
+      v-text="ability.ability.name"
+    >
       {{ showAbility }}
     </p>
     <br />
     <h1 class="features">Movimientos</h1>
-    <p>
+    <p v-for="(move, index) in showMoves" :key="index" v-text="move.move.name">
       {{ showMoves }}
     </p>
   </div>
@@ -67,10 +71,10 @@ export default {
       return this.infoPokes.sprites.front_default;
     },
     showAbility() {
-      return this.infoPokes.abilities[`0`].ability.name;
+      return this.infoPokes.abilities;
     },
     showMoves() {
-      return this.infoPokes.moves[`0`].move.name;
+      return this.infoPokes.moves;
     },
   },
 };
